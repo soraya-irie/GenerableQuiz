@@ -23,6 +23,10 @@ class QuizGenerator {
         }
     }
 
+    func regenerate(question: Question.PartiallyGenerated) {
+        let session = LanguageModelSession(instructions: "Create a question focused on \(topic)")
+    }
+
     func run(session: @escaping () async throws -> Void) {
         Task {
             isGenerating = true
