@@ -20,6 +20,13 @@ struct QuestionView: View {
                     AnswerView(displayAnswer: answer, selectedAnswer: $selectedAnswer)
                 }
             }
+
+            if let selectedAnswer = selectedAnswer {
+                Text(selectedAnswer.explanation ?? "Generating...")
+                    .font(.body.italic())
+                    .padding(.top, 8)
+                    .foregroundStyle(.secondary)
+            }
         }
     }
 }
