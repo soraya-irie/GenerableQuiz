@@ -5,6 +5,7 @@ struct QuestionView: View {
     var question: Question.PartiallyGenerated
     @State var selectedAnswer: Answer.PartiallyGenerated?
     @State private var showConfirmation = false
+    @Environment(QuizGenerator.self) private var generator
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -21,7 +22,7 @@ struct QuestionView: View {
                     }
                     .confirmationDialog("Regenerate question", isPresented: $showConfirmation) {
                         Button("Regenerate", role: .destructive) {
-
+                            generator.regenerate(question: question)
                         }
                     } message: {
                         Text("Replace this question with a new one?")
@@ -50,4 +51,5 @@ struct QuestionView: View {
 
 #Preview {
     QuestionView(question: Question.sample.asPartiallyGenerated())
+        .environment(QuizGenerator(topic: "Marine Life"))
 }
