@@ -15,6 +15,11 @@ struct AnswerView: View {
         }
         .buttonStyle(.bordered)
     }
+
+    private var isAnswerCorrect: Bool? {
+        guard selectedAnswer?.id == displayAnswer.id else { return nil }
+        return displayAnswer.isCorrect
+    }
 }
 
 #Preview {
