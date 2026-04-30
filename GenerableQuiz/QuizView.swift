@@ -5,12 +5,19 @@ struct QuizView: View {
 
     @ViewBuilder
     private var content: some View {
+        let lastQuestion = generator.quiz?.questions?.last
+
         Color.gray.opacity(0.1)
             .edgesIgnoringSafeArea(.all)
 
         ScrollViewReader { value in
             ScrollView {
                 quizStack
+            }
+            .onChange(of: lastQuestion?.answers?.count) {
+                withAnimation {
+                    value.scrollTo(lastQuestion?.id)
+                }
             }
         }
 
