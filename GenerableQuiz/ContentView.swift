@@ -12,7 +12,12 @@ struct ContentView: View {
                     QuizView()
                         .environment(QuizGenerator(topic: topic.name))
                 } label: {
-                    Text(topic.name)
+                    HStack {
+                        Image(systemName: topic.imageName)
+                        Text(topic.name)
+                        Spacer()
+                        Image(systemName: "arrow.right")
+                    }
                 }
                 .buttonStyle(.borderedProminent)
             }
