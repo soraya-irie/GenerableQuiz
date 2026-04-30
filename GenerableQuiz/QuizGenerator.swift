@@ -30,4 +30,8 @@ class QuizGenerator {
             isGenerating = false
         }
     }
+
+    func run(session: @escaping () async throws -> Void) {
+
+    }
 }
