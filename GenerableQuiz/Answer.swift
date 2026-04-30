@@ -14,3 +14,16 @@ struct Answer: Identifiable {
     @Guide(description: "Why is this answer correct or incorrect.")
     let explanation: String
 }
+
+extension Answer {
+    static let correctAnswer = Answer(
+        text: "This answer is correct.",
+        isCorrect: true,
+        explanation: "Explanation that this is right."
+    )
+    static let incorrectAnswer = Answer(
+        text: "This answer is incorrect.",
+        isCorrect: false,
+        explanation: "Explanation that this is wrong."
+    )
+}
