@@ -24,6 +24,12 @@ class QuizGenerator {
     }
 
     func regenerate(question: Question.PartiallyGenerated) {
+        guard !isGenerating,
+              var quiz = self.quiz,
+              let questions = quiz.questions,
+              let index = questions.firstIndex(where: { $0.id == question.id }) else {
+            return
+        }
         let session = LanguageModelSession(instructions: "Create a question focused on \(topic)")
     }
 
