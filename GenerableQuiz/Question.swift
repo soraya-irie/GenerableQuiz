@@ -1,9 +1,13 @@
 import Foundation
+import FoundationModels
 
+@Generable
 struct Question: Identifiable {
     let id = UUID()
 
+    @Guide(description: "A multiple-choice question on the topic that has been entered.")
     let text: String
 
+    @Guide(description: "Answers for the multiple choice question, with only 1 of the answers being correct.", .count(4))
     let answers: [Answer]
 }
