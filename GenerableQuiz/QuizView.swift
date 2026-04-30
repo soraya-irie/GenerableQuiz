@@ -19,6 +19,12 @@ struct QuizView: View {
                         .padding(.vertical, 8)
                 }
             }
+
+            Button {
+
+            } label: {
+                Text("Start a new quiz")
+            }
         }
         .navigationTitle(generator.topic)
         .padding()
