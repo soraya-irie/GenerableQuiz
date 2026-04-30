@@ -8,7 +8,12 @@ struct ContentView: View {
                 .font(.title)
 
             ForEach(Topic.topics) { topic in
-                Text(topic.name)
+                NavigationLink {
+
+                } label: {
+                    Text(topic.name)
+                }
+                .buttonStyle(.borderedProminent)
             }
 
             Spacer()
@@ -17,15 +22,17 @@ struct ContentView: View {
     }
 
     var body: some View {
-        ZStack {
-            Color.gray.opacity(0.1)
-                .edgesIgnoringSafeArea(.all)
+        NavigationStack {
+            ZStack {
+                Color.gray.opacity(0.1)
+                    .edgesIgnoringSafeArea(.all)
 
-            switch SystemLanguageModel.default.availability {
-            case .available:
-                topicSelectionView
-            case .unavailable(let unavailableReason):
-                UnavailableView(reason: unavailableReason)
+                switch SystemLanguageModel.default.availability {
+                case .available:
+                    topicSelectionView
+                case .unavailable(let unavailableReason):
+                    UnavailableView(reason: unavailableReason)
+                }
             }
         }
     }
