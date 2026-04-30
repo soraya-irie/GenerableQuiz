@@ -13,6 +13,7 @@ struct QuestionView: View {
 
                     Spacer()
                 }
+                .padding(.bottom, 8)
             }
 
             if let answers = question.answers {
@@ -28,6 +29,8 @@ struct QuestionView: View {
                     .foregroundStyle(.secondary)
             }
         }
+        .padding(24)
+        .background(.background, in: RoundedRectangle(cornerRadius: 24.0))
     }
 }
 
