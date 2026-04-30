@@ -30,9 +30,18 @@ class QuizGenerator {
               let index = questions.firstIndex(where: { $0.id == question.id }) else {
             return
         }
+
         let session = LanguageModelSession(instructions: "Create a question focused on \(topic)")
-        let exsitingQuestions = questions.compactMap { $0.text }.joined(separator: ", ")
+        let existingQuestions = questions.compactMap { $0.text }.joined(separator: ", ")
         let prompt = "Avoid asking questions similar to these: \(existingQuestions)"
+        let stream = session.streamResponse(to: prompt, generating: Question.self)
+
+        run {
+            for try await partial in stream {
+                quiz.questions?[index] = partial.content
+                self.quiz = quiz
+            }
+        }
     }
 
     func run(session: @escaping () async throws -> Void) {
