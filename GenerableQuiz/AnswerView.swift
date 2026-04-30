@@ -9,9 +9,13 @@ struct AnswerView: View {
         Button {
             selectedAnswer = displayAnswer
         } label: {
-            Text(displayAnswer.text ?? "Generating...")
-                .multilineTextAlignment(.leading)
-                .foregroundStyle(.primary)
+            HStack {
+                Image(systemName: imageName)
+                Text(displayAnswer.text ?? "Generating...")
+                    .multilineTextAlignment(.leading)
+                    .foregroundStyle(.primary)
+                Spacer()
+            }
         }
         .buttonStyle(.bordered)
     }
