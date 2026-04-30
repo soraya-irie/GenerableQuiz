@@ -23,6 +23,9 @@ struct QuizView: View {
 
                 quizStack
             }
+            .onAppear {
+                generator.generateQuiz()
+            }
         }
     }
 }
