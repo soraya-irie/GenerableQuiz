@@ -4,6 +4,7 @@ import FoundationModels
 struct QuestionView: View {
     var question: Question.PartiallyGenerated
     @State var selectedAnswer: Answer.PartiallyGenerated?
+    @State private var showConfirmation = false
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -12,6 +13,12 @@ struct QuestionView: View {
                     Text(text)
 
                     Spacer()
+
+                    Button {
+                        showConfirmation = true
+                    } label: {
+                        Image(systemName: "arrow.counterclockwise")
+                    }
                 }
                 .padding(.bottom, 8)
             }
