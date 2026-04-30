@@ -9,7 +9,8 @@ struct ContentView: View {
 
             ForEach(Topic.topics) { topic in
                 NavigationLink {
-
+                    QuizView()
+                        .environment(QuizGenerator(topic: topic.name))
                 } label: {
                     Text(topic.name)
                 }
