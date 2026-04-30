@@ -5,7 +5,17 @@ struct UnavailableView: View {
     let reason: SystemLanguageModel.Availability.UnavailableReason
 
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        let text = switch reason {
+        case .appleIntelligenceNotEnabled:
+            "Apple Intelligence is not enabled. Please enable it in Settings."
+        case .deviceNotEligible:
+            "This device is not eligible for Apple Intelligence. Please use a compatible device."
+        case .modelNotReady:
+            "The language model is not ready."
+        @unknown default:
+            "The language model is unavailable."
+        }
+        Text(text)
     }
 }
 
