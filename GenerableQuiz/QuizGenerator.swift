@@ -31,6 +31,8 @@ class QuizGenerator {
             return
         }
         let session = LanguageModelSession(instructions: "Create a question focused on \(topic)")
+        let exsitingQuestions = questions.compactMap { $0.text }.joined(separator: ", ")
+        let prompt = "Avoid asking questions similar to these: \(existingQuestions)"
     }
 
     func run(session: @escaping () async throws -> Void) {
