@@ -32,6 +32,10 @@ class QuizGenerator {
     }
 
     func run(session: @escaping () async throws -> Void) {
-
+        Task {
+            do {
+                try await session()
+            }
+        }
     }
 }
