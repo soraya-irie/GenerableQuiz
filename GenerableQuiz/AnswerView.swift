@@ -5,7 +5,14 @@ struct AnswerView: View {
     var displayAnswer: Answer.PartiallyGenerated
 
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button {
+
+        } label: {
+            Text(displayAnswer.text ?? "Generating...")
+                .multilineTextAlignment(.leading)
+                .foregroundStyle(.primary)
+        }
+        .buttonStyle(.bordered)
     }
 }
 
