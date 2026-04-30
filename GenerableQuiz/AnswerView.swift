@@ -18,6 +18,16 @@ struct AnswerView: View {
             }
         }
         .buttonStyle(.bordered)
+        .foregroundStyle(tintColor)
+        .tint(tintColor)
+    }
+
+    private var tintColor: Color {
+        if let isAnswerCorrect {
+            return isAnswerCorrect ? .green : .red
+        } else {
+            return .secondary
+        }
     }
 
     private var imageName: String {
