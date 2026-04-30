@@ -21,7 +21,7 @@ struct QuizView: View {
             }
 
             Button {
-
+                generator.generateQuiz()
             } label: {
                 Text("Start a new quiz")
             }
