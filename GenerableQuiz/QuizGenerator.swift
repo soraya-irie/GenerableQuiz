@@ -16,18 +16,10 @@ class QuizGenerator {
         let session = LanguageModelSession(instructions: "Create a quiz with the provided topic as the focus.")
         let stream = session.streamResponse(to: topic, generating: Quiz.self)
 
-        Task {
-            isGenerating = true
-
-            do {
-                for try await partial in stream {
-                    self.quiz = partial.content
-                }
-            } catch {
-                self.error = error
+        run {
+            for try await partial in stream {
+                self.quiz = partial.content
             }
-
-            isGenerating = false
         }
     }
 
