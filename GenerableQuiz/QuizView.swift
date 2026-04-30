@@ -8,8 +8,10 @@ struct QuizView: View {
         Color.gray.opacity(0.1)
             .edgesIgnoringSafeArea(.all)
 
-        ScrollView {
-            quizStack
+        ScrollViewReader { value in
+            ScrollView {
+                quizStack
+            }
         }
 
         if generator.isGenerating {
@@ -37,6 +39,7 @@ struct QuizView: View {
                     QuestionView(question: question)
                         .disabled(generator.isGenerating)
                         .padding(.vertical, 8)
+                        .id(question.id)
                 }
             }
 
