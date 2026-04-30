@@ -33,9 +33,16 @@ class QuizGenerator {
 
     func run(session: @escaping () async throws -> Void) {
         Task {
+            isGenerating = true
+
+            error = nil
             do {
                 try await session()
+            } catch {
+                self.error = error
             }
+
+            isGenerating = false
         }
     }
 }
