@@ -16,6 +16,14 @@ struct AnswerView: View {
         .buttonStyle(.bordered)
     }
 
+    private var imageName: String {
+        if let isAnswerCorrect {
+            return isAnswerCorrect ? "checkmark.circle.fill" : "xmark.circle.fill"
+        } else {
+            return "circle"
+        }
+    }
+
     private var isAnswerCorrect: Bool? {
         guard selectedAnswer?.id == displayAnswer.id else { return nil }
         return displayAnswer.isCorrect
