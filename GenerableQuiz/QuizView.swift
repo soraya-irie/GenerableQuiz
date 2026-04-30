@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct QuizView: View {
-    @State var quiz: Quiz
+    @Environment(QuizGenerator.self) private var generator
 
     private var quizStack: some View {
         VStack(spacing: 16) {
@@ -26,13 +26,6 @@ struct QuizView: View {
 }
 
 #Preview {
-    var sampleQuiz: Quiz {
-        Quiz(questions: [
-            "Question 1",
-            "Question 2",
-            "Question 3"
-        ])
-    }
-
-    QuizView(quiz: sampleQuiz)
+    QuizView()
+        .environment(QuizGenerator(topic: "Marin Life"))
 }
