@@ -9,15 +9,18 @@ struct QuizView: View {
                 Text(question)
             }
         }
+        .navigationTitle("Sample Topic")
         .padding()
     }
 
     var body: some View {
-        ZStack {
-            Color.gray.opacity(0.1)
-                .edgesIgnoringSafeArea(.all)
+        NavigationStack {
+            ZStack {
+                Color.gray.opacity(0.1)
+                    .edgesIgnoringSafeArea(.all)
 
-            quizStack
+                quizStack
+            }
         }
     }
 }
