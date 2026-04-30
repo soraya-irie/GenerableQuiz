@@ -11,6 +11,16 @@ struct QuizView: View {
         ScrollView {
             quizStack
         }
+
+        if generator.isGenerating {
+            HStack {
+                ProgressView()
+                Text("Generating...")
+            }
+            .frame(width: 200, height: 75)
+            .background(.ultraThinMaterial)
+            .clipShape(RoundedRectangle(cornerRadius: 16.0))
+        }
     }
 
     private var quizStack: some View {
