@@ -19,6 +19,14 @@ struct UnavailableView: View {
     }
 }
 
-#Preview {
+#Preview("Not enabled") {
     UnavailableView(reason: .appleIntelligenceNotEnabled)
+}
+
+#Preview("Not eligible") {
+    UnavailableView(reason: .deviceNotEligible)
+}
+
+#Preview("Model not ready") {
+    UnavailableView(reason: .modelNotReady)
 }
