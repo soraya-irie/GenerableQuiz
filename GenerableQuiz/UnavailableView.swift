@@ -15,7 +15,7 @@ struct UnavailableView: View {
         @unknown default:
             "The language model is unavailable."
         }
-        Text(text)
+        ContentUnavailableView(text, systemImage: "apple.intelligence.badge.xmark")
     }
 }
 
