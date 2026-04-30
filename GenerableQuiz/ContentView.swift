@@ -6,6 +6,12 @@ struct ContentView: View {
         VStack(spacing: 16) {
             Text("Pick a topic for your quiz")
                 .font(.title)
+
+            ForEach(Topic.topics) { topic in
+                Text(topic.name)
+            }
+
+            Spacer()
         }
         .padding()
     }
