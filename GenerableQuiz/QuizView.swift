@@ -3,6 +3,16 @@ import SwiftUI
 struct QuizView: View {
     @Environment(QuizGenerator.self) private var generator
 
+    @ViewBuilder
+    private var content: some View {
+        Color.gray.opacity(0.1)
+            .edgesIgnoringSafeArea(.all)
+
+        ScrollView {
+            quizStack
+        }
+    }
+
     private var quizStack: some View {
         VStack(spacing: 16) {
             if let error = generator.error {
@@ -36,12 +46,7 @@ struct QuizView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.gray.opacity(0.1)
-                    .edgesIgnoringSafeArea(.all)
-
-                ScrollView {
-                    quizStack
-                }
+                content
             }
             .onAppear {
                 generator.generateQuiz()
