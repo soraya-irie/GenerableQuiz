@@ -19,6 +19,11 @@ struct QuizView: View {
                     value.scrollTo(lastQuestion?.id)
                 }
             }
+            .onChange(of: generator.isGenerating) {
+                withAnimation {
+                    value.scrollTo(generator.quiz?.questions?.first?.id)
+                }
+            }
         }
 
         if generator.isGenerating {
