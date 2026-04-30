@@ -4,7 +4,12 @@ struct QuizView: View {
     @State var quiz: Quiz
 
     private var quizStack: some View {
-        Text("Quiz Stack")
+        VStack(spacing: 16) {
+            ForEach(quiz.questions, id: \.description) { question in
+                Text(question)
+            }
+        }
+        .padding()
     }
 
     var body: some View {
