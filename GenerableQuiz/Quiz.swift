@@ -2,5 +2,6 @@ import FoundationModels
 
 @Generable
 struct Quiz {
+    @Guide(description: "The questions associated with this quiz")
     let questions: [String]
 }
