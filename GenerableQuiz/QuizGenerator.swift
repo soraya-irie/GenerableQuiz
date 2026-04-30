@@ -1,4 +1,5 @@
 import SwiftUI
+import FoundationModels
 
 @Observable
 class QuizGenerator {
@@ -7,5 +8,9 @@ class QuizGenerator {
 
     init(topic: String) {
         self.topic = topic
+    }
+
+    func generateQuzi() {
+        let session = LanguageModelSession(instructions: "Create a quiz with the provided topic as the focus.")
     }
 }
