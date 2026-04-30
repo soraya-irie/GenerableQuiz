@@ -1,21 +1,19 @@
-//
-//  ContentView.swift
-//  GenerableQuiz
-//
-//  Created by soraya irie on 2026/04/29.
-//
-
 import SwiftUI
+import FoundationModels
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            Color.gray.opacity(0.1)
+                .edgesIgnoringSafeArea(.all)
+
+            switch SystemLanguageModel.default.availability {
+            case .available:
+                Text("Apple Intelligence is available!")
+            case .unavailable(let unavailableReason):
+                UnavailableView(reason: unavailableReason)
+            }
         }
-        .padding()
     }
 }
 
