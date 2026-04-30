@@ -19,6 +19,13 @@ struct QuestionView: View {
                     } label: {
                         Image(systemName: "arrow.counterclockwise")
                     }
+                    .confirmationDialog("Regenerate question", isPresented: $showConfirmation) {
+                        Button("Regenerate", role: .destructive) {
+
+                        }
+                    } message: {
+                        Text("Replace this question with a new one?")
+                    }
                 }
                 .padding(.bottom, 8)
             }
