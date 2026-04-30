@@ -13,7 +13,12 @@ struct QuizView: View {
     }
 
     var body: some View {
-        quizStack
+        ZStack {
+            Color.gray.opacity(0.1)
+                .edgesIgnoringSafeArea(.all)
+
+            quizStack
+        }
     }
 }
 
