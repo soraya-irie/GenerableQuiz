@@ -5,6 +5,13 @@ struct QuizView: View {
 
     private var quizStack: some View {
         VStack(spacing: 16) {
+            if let error = generator.error {
+                Label(error.localizedDescription, systemImage: "xmark.circle")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .foregroundStyle(Color.red)
+                    .padding(.horizontal)
+            }
+
             if let questions = generator.quiz?.questions {
                 ForEach(questions, id: \.description) { question in
                     Text(question)
