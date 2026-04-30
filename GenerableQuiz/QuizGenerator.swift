@@ -6,6 +6,7 @@ class QuizGenerator {
     let topic: String
     var quiz: Quiz.PartiallyGenerated?
     var isGenerating = false
+    var error: Error?
 
     init(topic: String) {
         self.topic = topic
@@ -18,8 +19,12 @@ class QuizGenerator {
         Task {
             isGenerating = true
 
-            for try await partial in stream {
-                self.quiz = partial.content
+            do {
+                for try await partial in stream {
+                    self.quiz = partial.content
+                }
+            } catch {
+                self.error = error
             }
 
             isGenerating = false
